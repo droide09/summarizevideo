@@ -21,8 +21,8 @@ def extract_text_from_video(video_path,min_plength,max_plength,planguage):
 
   audio = AudioSegment.from_file("temp_audio.wav")
   chunks = []
-  for i in range(0, len(audio), 60000):  # 60 seconds chunks
-    chunk = audio[i:i+60000]
+  for i in range(0, len(audio), 30000):  # 60 seconds chunks
+    chunk = audio[i:i+30000]
     chunks.append(chunk)
     print("X")
 
