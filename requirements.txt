@@ -1,0 +1,9 @@
+requests
+numpy
+pytube
+transformers
+moviepy
+speechRecognition
+torch==1.13.0
+torchvision
+pydub
