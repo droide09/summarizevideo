@@ -21,22 +21,23 @@ def extract_text_from_video(video_path,min_plength,max_plength,planguage):
 
   audio = AudioSegment.from_file("temp_audio.wav")
   chunks = []
-  for i in range(0, len(audio), 120000):  # 60 seconds chunks
-    chunk = audio[i:i+120000]
+  for i in range(0, len(audio), 60000):  # 60 seconds chunks
+    chunk = audio[i:i+60000]
     chunks.append(chunk)
     print("X")
 
   alltext = "";
 
   for chunk in chunks:
+      print(".")
       with sr.AudioFile(chunk.export("temp.wav", format="wav")) as source:
           audio = recognizer.record(source)
       try:
           text = recognizer.recognize_google(audio, language=planguage)
-          print(".", text)
+          print(text)
           alltext = alltext + " "+text
       except sr.UnknownValueError:
-          print("Unable to recognize speech")
+          print("E")
       except sr.RequestError as e:
           print("Error:", e)
   
